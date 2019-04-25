@@ -69,7 +69,7 @@ app.put('/todos/:id', function (request, response) {
 // 404 message
 app.use(function (request, response, next) {
   response.status(404).json({
-    error: 'sorry, ' + request.url + ' not found'
+    error: 'sorry, the link: ' + request.url + ' not found'
   })
 })
 
