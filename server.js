@@ -18,7 +18,9 @@ app.get('/todos', function (request, response) {
 
 app.get('/todos/:id', function (request, response) {
   if (!todos[request.params.id]) {
-    response.status(404).end('sorry, no such todo item: ' + request.params.id)
+    response.status(404).json({
+      error: 'sorry, no such todo item: ' + request.params.id
+    })
     return
   }
   response.json(todos[request.params.id])
@@ -37,7 +39,9 @@ app.post('/todos', function (request, response) {
 // delete
 app.delete('/todos/:id', function (request, response) {
   if (!todos[request.params.id]) {
-    response.status(404).end('sorry, no such todo item: ' + request.params.id)
+    response.status(404).json({
+      error: 'sorry, no such todo item: ' + request.params.id
+    })
     return
   }
   delete todos[request.params.id]
@@ -47,7 +51,9 @@ app.delete('/todos/:id', function (request, response) {
 // put: update
 app.put('/todos/:id', function (request, response) {
   if (!todos[request.params.id]) {
-    response.status(404).end('sorry, no such todo item: ' + request.params.id)
+    response.status(404).json({
+      error: 'sorry, no such todo item: ' + request.params.id
+    })
     return
   }
   var todo = todos[request.params.id]
